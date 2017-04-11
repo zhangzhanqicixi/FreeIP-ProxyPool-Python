@@ -50,7 +50,6 @@ class MySql:
             self.connection.close()
 
 
-
 if __name__ == '__main__':
     mysql = MySql('localhost', 'root', 'root', 'doubanMovie', 'utf8')
     print(mysql.query('select * from movie limit 10'))

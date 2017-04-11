@@ -79,12 +79,19 @@ class Service:
         for each in fetchall:
             anonymity = '高匿' if each[4] == 2 else '透明'
             last_verify_time = str(each[10] if each[10] is not None else each[9])
-            str_json = '{"ip": "' + each[1] + ':' + str(each[2]) + \
-                       '", "https":"' + str(each[3]) + \
-                       '", "type": "' + anonymity + \
-                       '", "country": "' + each[5] + \
-                       '", "last_verify_time": "' + last_verify_time + '"}'
-            data_list.append(json.loads(str_json, encoding='utf-8'))
+            data = {
+                'ip': each[1] + ':' + str(each[2]),
+                'https:': each[3],
+                'type': anonymity,
+                'country': each[5],
+                'last_verify_time': last_verify_time
+            }
+            # str_json = '{"ip": "' + each[1] + ':' + str(each[2]) + \
+            #            '", "https":"' + str(each[3]) + \
+            #            '", "type": "' + anonymity + \
+            #            '", "country": "' + each[5] + \
+            #            '", "last_verify_time": "' + last_verify_time + '"}'
+            data_list.append(data)
 
         return data_list if len(data_list) > 0 else data
 
