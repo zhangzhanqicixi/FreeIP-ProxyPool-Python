@@ -5,6 +5,7 @@
 # @Software: PyCharm
 
 import pymysql.cursors
+from Util.utils import Util
 
 
 class MySql:
@@ -20,7 +21,7 @@ class MySql:
                 cursor.execute(sql)
                 return cursor.fetchall()
         except Exception as e:
-            print(e)
+            Util.log_error(e)
             return None
         finally:
             self.connection.close()
@@ -32,19 +33,23 @@ class MySql:
                 cursor.execute(sql)
                 return cursor.fetchone()
         except Exception as e:
-            print(e)
+            Util.log_error(e)
             return None
         finally:
             self.connection.close()
 
-    # 插入数据
-    def save(self, sql):
+    # 执行sql（自动提交事务）
+    def execute(self, sql):
         try:
             with self.connection.cursor() as cursor:
                 cursor.execute(sql)
                 self.connection.commit()
         except Exception as e:
-            print(e)
+            Util.log_error(e)
+        finally:
+            self.connection.close()
+
+
 
 if __name__ == '__main__':
     mysql = MySql('localhost', 'root', 'root', 'doubanMovie', 'utf8')

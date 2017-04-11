@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2017/4/7 下午6:10
 # @Author  : ZHANGZHANQI
-# @File    : verifyProxy.py
+# @File    : proxy_verify.py
 # @Software: PyCharm
 
 import re
 import requests
 import json
+from Util.utils import Util
 
 
 class VerifyProxy:
@@ -26,7 +27,7 @@ class VerifyProxy:
     def __init__(self):
         pass
 
-    # 判断IP是否有效(HTTP or HTTPS)
+    # 判断IP是否有效(支持HTTP或HTTPS)
     def validate_proxy(self, ip, protocol, timeout):
         if 'http' != protocol.lower() and 'https' != protocol.lower():
             return '{"exception": "error protocol"}'
@@ -46,6 +47,7 @@ class VerifyProxy:
                     return result
 
                 except Exception as e:
+                    Util.log_error(e)
                     return '{"exception": "' + str(e) + '"}'
         return '{"exception": "empty proxy"}'
 
