@@ -83,11 +83,11 @@ class SpiderProxy:
     @staticmethod
     async def proxy_list():
         await asyncio.wait([
-            SpiderProxy.proxy_site_xici(),
             SpiderProxy.proxy_site_66ip_api(),
             SpiderProxy.proxy_site_kuaidaili(),
             SpiderProxy.proxy_site_66ip(),
-            SpiderProxy.proxy_site_ip181()
+            SpiderProxy.proxy_site_ip181(),
+            SpiderProxy.proxy_site_xici(),
         ])
 
     # xicidaili --> http://www.xicidaili.com/
@@ -216,4 +216,5 @@ class SpiderProxy:
 
 
 if __name__ == '__main__':
-    SpiderProxy.do_start()
+    while True:
+        SpiderProxy.do_start()

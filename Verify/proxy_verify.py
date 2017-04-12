@@ -47,7 +47,7 @@ class VerifyProxy:
                     return result
 
                 except Exception as e:
-                    Util.log_error(e)
+                    # Util.log_error(e)
                     return '{"exception": "' + str(e) + '"}'
         return '{"exception": "empty proxy"}'
 

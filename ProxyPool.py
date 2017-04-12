@@ -5,6 +5,7 @@
 # @Software: PyCharm
 
 from flask import Flask, jsonify, abort, make_response, request, Response
+from flask_restful import reqparse
 from Service.proxy_service import Service
 import json
 
@@ -16,12 +17,15 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/api/get_proxy', methods=['GET'])
+@app.route('/api/getProxy', methods=['GET'])
 def get_task():
-    condition = {}
-    data = Service().proxy_list(condition)
-    for each in data:
-        print(each)
+    parser = reqparse.RequestParser()
+    parser.add_argument('count', type=int)
+    parser.add_argument('https', type=int)
+    parser.add_argument('type', type=int)
+    parser.add_argument('country', type=str)
+    args = parser.parse_args()
+    data = Service().proxy_list(args)
     """
         出于安全考虑？
         jsonify无法返回content-type指定浏览器编码方式，application/json后必须再加charset=utf-8，否认会出现乱码
