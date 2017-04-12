@@ -7,7 +7,6 @@
 import re
 import requests
 import json
-from Util.utils import Util
 
 
 class VerifyProxy:

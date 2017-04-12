@@ -1,0 +1,11 @@
+2017-04-12 16:46:30,666 - proxy_spider - INFO - UPDATE httpbin SET verify_count=2, speed=1.154726, alive=1, leave_count=20 WHERE id=565
+2017-04-12 16:46:30,710 - proxy_spider - INFO - UPDATE httpbin SET verify_count=2, leave_count=19, alive=0 WHERE id=566
+2017-04-12 16:46:31,355 - proxy_spider - INFO - UPDATE httpbin SET verify_count=2, speed=1.857423, alive=1, leave_count=20 WHERE id=565
+2017-04-12 16:46:31,403 - proxy_spider - INFO - UPDATE httpbin SET verify_count=2, leave_count=18, alive=0 WHERE id=566
+2017-04-12 16:46:33,576 - proxy_spider - INFO - UPDATE httpbin SET verify_count=2, leave_count=19, alive=0 WHERE id=565
+2017-04-12 16:46:33,622 - proxy_spider - INFO - UPDATE httpbin SET verify_count=2, leave_count=17, alive=0 WHERE id=566
+2017-04-12 16:46:34,465 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, leave_count=17, alive=0 WHERE id=240
+2017-04-12 16:47:46,139 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, speed=0.942085, alive=1, leave_count=20 WHERE id=242
+2017-04-12 16:47:46,922 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, speed=0.771550, alive=1, leave_count=20 WHERE id=243
+2017-04-12 16:47:46,983 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, leave_count=15, alive=0 WHERE id=245
+2017-04-12 16:47:47,435 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, speed=0.443684, alive=1, leave_count=20 WHERE id=244

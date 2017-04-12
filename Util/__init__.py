@@ -4,4 +4,6 @@
 # @File    : __init__.py
 # @Software: PyCharm
 
-import Util.utils
+import Util
+import sys
+sys.path.append('..')

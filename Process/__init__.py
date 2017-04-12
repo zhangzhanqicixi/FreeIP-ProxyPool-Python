@@ -4,5 +4,9 @@
 # @File    : __init__.py
 # @Software: PyCharm
 
+import sys
+from Util.utils import Util
+from DB.mysql import MySql
+from Verify.proxy_verify import VerifyProxy
 
-import Process.proxy_process
+sys.path.append('..')
