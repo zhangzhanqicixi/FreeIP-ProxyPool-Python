@@ -3,7 +3,3 @@
 # @Author  : ZHANGZHANQI
 # @File    : __init__.py
 # @Software: PyCharm
-
-import DB.mysql
-import DB.mongo
-import DB.redis

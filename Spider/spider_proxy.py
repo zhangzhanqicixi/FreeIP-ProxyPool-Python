@@ -9,7 +9,9 @@ import asyncio
 import aiohttp
 import re
 import json
+import sys
 from pyquery import PyQuery
+sys.path.append('..')
 from Verify.proxy_verify import VerifyProxy
 from Util.utils import Util
 from DB.mysql import MySql

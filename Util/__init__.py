@@ -3,7 +3,3 @@
 # @Author  : ZHANGZHANQI
 # @File    : __init__.py
 # @Software: PyCharm
-
-import Util
-import sys
-sys.path.append('..')

@@ -3,5 +3,3 @@
 # @Author  : ZHANGZHANQI
 # @File    : __init__.py
 # @Software: PyCharm
-
-import Service.proxy_service

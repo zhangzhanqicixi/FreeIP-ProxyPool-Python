@@ -4,10 +4,14 @@
 # @File    : proxy_process.py
 # @Software: PyCharm
 
+import sys
 import threading
-from Process import Util
-from Process import MySql
-from Process import VerifyProxy
+
+sys.path.append('..')
+
+from Util.utils import Util
+from DB.mysql import MySql
+from Verify.proxy_verify import VerifyProxy
 
 DB_ADDRESS = 'localhost'
 DB_USER = 'root'

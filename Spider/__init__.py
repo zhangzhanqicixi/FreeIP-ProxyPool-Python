@@ -3,5 +3,3 @@
 # @Author  : ZHANGZHANQI
 # @File    : __init__.py
 # @Software: PyCharm
-
-import Spider.spider_proxy

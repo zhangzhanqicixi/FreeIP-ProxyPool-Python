@@ -9,3 +9,5 @@
 2017-04-12 16:47:46,922 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, speed=0.771550, alive=1, leave_count=20 WHERE id=243
 2017-04-12 16:47:46,983 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, leave_count=15, alive=0 WHERE id=245
 2017-04-12 16:47:47,435 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, speed=0.443684, alive=1, leave_count=20 WHERE id=244
+2017-04-12 17:11:01,888 - proxy_spider - INFO - UPDATE httpbin SET verify_count=6, speed=0.901725, alive=1, leave_count=20 WHERE id=246
+2017-04-12 17:12:30,504 - proxy_spider - INFO - Save Proxy 175.155.25.91:808 From xicidaili.com
