@@ -6,6 +6,7 @@
 
 import sys
 import threading
+import time
 
 sys.path.append('..')
 
@@ -29,6 +30,9 @@ class Process(threading.Thread):
             if fetchall is None:
                 sql = 'SELECT * FROM httpbin WHERE alive=0 ORDER BY update_time'
                 fetchall = MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).query(sql)
+            if fetchall is None:
+                time.sleep(10)
+                return
             for each in fetchall:
                 each_id = each[0]
                 proxy = each[1] + ':' + each[2]
@@ -77,6 +81,16 @@ class Process(threading.Thread):
                 # 线程2 验证所有未验证的IP
                 sql = 'SELECT * FROM httpbin WHERE update_time IS NULL'
             self.checking(sql)
+
+
+def run():
+    for i in range(3):
+        thread = Process()
+        thread.start()
+        threads.append(thread)
+
+    for i in threads:
+        i.join()
 
 
 if __name__ == '__main__':

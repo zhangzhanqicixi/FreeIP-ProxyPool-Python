@@ -35,5 +35,8 @@ def get_task():
     return Response(json.dumps(data, ensure_ascii=False), mimetype='application/json;charset=utf-8')
 
 
+def run():
+    app.run(host='0.0.0.0')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

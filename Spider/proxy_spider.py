@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2017/4/7 下午3:00
 # @Author  : ZHANGZHANQI
-# @File    : spider_proxy.py
+# @File    : proxy_spider.py
 # @Software: PyCharm
 
 
@@ -11,6 +11,7 @@ import re
 import json
 import sys
 from pyquery import PyQuery
+
 sys.path.append('..')
 from Verify.proxy_verify import VerifyProxy
 from Util.utils import Util
@@ -215,6 +216,11 @@ class SpiderProxy:
                                 await SpiderProxy.verify_and_save(ip_address + ':' + ip_port, '66ip.cn')
         except Exception as e:
             Util.log_error(e)
+
+
+def run():
+    while True:
+        SpiderProxy.do_start()
 
 
 if __name__ == '__main__':

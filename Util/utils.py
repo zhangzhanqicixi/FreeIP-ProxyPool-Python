@@ -12,7 +12,7 @@ import logging
 logger = logging.getLogger('proxy_spider')
 logger.setLevel(logging.DEBUG)
 # 创建一个handler，写入日志文件
-fh = logging.FileHandler('../proxy_spider.log')
+fh = logging.FileHandler('proxy_spider.log')
 fh.setLevel(logging.DEBUG)
 
 # 创建一个handler，输出到控制台
