@@ -10,6 +10,7 @@ import aiohttp
 import re
 import json
 import sys
+import time
 from pyquery import PyQuery
 
 sys.path.append('..')
@@ -220,9 +221,15 @@ class SpiderProxy:
 
 def run():
     while True:
-        SpiderProxy.do_start()
+        try:
+            SpiderProxy.do_start()
+        except:
+            time.sleep(10)
 
 
 if __name__ == '__main__':
     while True:
-        SpiderProxy.do_start()
+        try:
+            SpiderProxy.do_start()
+        except:
+            time.sleep(10)

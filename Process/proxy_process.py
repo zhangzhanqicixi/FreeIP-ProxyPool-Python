@@ -53,7 +53,7 @@ class Process(threading.Thread):
                         # 更新
                         sql = "UPDATE httpbin SET verify_count={0}, leave_count={1}, alive={2} WHERE id={3}" \
                             .format(verify_count, leave_count, alive, each_id)
-                        Util.log_info(sql)
+                        # Util.log_info(sql)
                     MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).execute(sql)
                 elif isinstance(r, dict):
                     if 'exception' not in r.keys():
@@ -64,7 +64,7 @@ class Process(threading.Thread):
                         # result_https = VerifyProxy().validate_proxy(proxy, 'https', timeout=3)
                         sql = "UPDATE httpbin SET verify_count={0}, speed={1}, alive={2}, leave_count={3} WHERE id={4}" \
                             .format(verify_count, speed, alive, leave_count, each_id)
-                        Util.log_info(sql)
+                        # Util.log_info(sql)
                         MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).execute(sql)
                 threadLock.release()
 
