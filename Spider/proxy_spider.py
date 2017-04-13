@@ -80,9 +80,18 @@ class SpiderProxy:
 
     @staticmethod
     def do_start():
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(SpiderProxy.proxy_list())
-        loop.close()
+        loop = None
+        while True:
+            try:
+                loop = asyncio.get_event_loop()
+                loop.run_until_complete(SpiderProxy.proxy_list())
+                loop.close()
+            except Exception as e:
+                Util.log_error(e)
+                if loop is not None:
+                    loop.close()
+                loop = None
+                continue
 
     @staticmethod
     async def proxy_list():
@@ -221,15 +230,9 @@ class SpiderProxy:
 
 def run():
     while True:
-        try:
-            SpiderProxy.do_start()
-        except:
-            time.sleep(10)
+        SpiderProxy.do_start()
 
 
 if __name__ == '__main__':
     while True:
-        try:
-            SpiderProxy.do_start()
-        except:
-            time.sleep(10)
+        SpiderProxy.do_start()

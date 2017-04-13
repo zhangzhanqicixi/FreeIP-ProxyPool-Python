@@ -28,7 +28,7 @@ class Process(threading.Thread):
         try:
             fetchall = MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).query(sql)
             if fetchall is None:
-                sql = 'SELECT * FROM httpbin WHERE alive=0 ORDER BY update_time'
+                sql = 'SELECT * FROM httpbin WHERE anonymity=2 AND alive=1 ORDER BY update_time'
                 fetchall = MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).query(sql)
             if fetchall is None:
                 time.sleep(10)
