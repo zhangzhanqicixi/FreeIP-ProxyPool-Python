@@ -85,13 +85,12 @@ class SpiderProxy:
             try:
                 loop = asyncio.get_event_loop()
                 loop.run_until_complete(SpiderProxy.proxy_list())
-                loop.close()
             except Exception as e:
                 Util.log_error(e)
+                loop.close()
+            finally:
                 if loop is not None:
                     loop.close()
-                loop = None
-                continue
 
     @staticmethod
     async def proxy_list():
