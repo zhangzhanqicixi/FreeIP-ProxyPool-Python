@@ -26,8 +26,8 @@ class SpiderProxy:
     async def proxy_list():
         while True:
             await asyncio.wait([
-                ProxySites.proxy_site_kuaidaili(),
                 ProxySites.proxy_site_mimvp(),
+                ProxySites.proxy_site_kuaidaili(),
                 ProxySites.proxy_site_66ip_api(),
                 ProxySites.proxy_site_66ip(),
                 ProxySites.proxy_site_ip181(),

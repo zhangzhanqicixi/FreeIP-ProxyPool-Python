@@ -72,7 +72,7 @@ class ProxySites:
                                     continue
 
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_mimvp: ' + str(e))
 
     # guobanjia 前10页ip --> http://www.goubanjia.com/free/
     @staticmethod
@@ -105,7 +105,7 @@ class ProxySites:
                             await VerifySave.verify_and_save(address, 'guobanjia.com')
             pass
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_goubanjia: ' + str(e))
 
     # xicidaili --> http://www.xicidaili.com/
     @staticmethod
@@ -133,7 +133,7 @@ class ProxySites:
                                 # 非异步，待解决
                                 await VerifySave.verify_and_save(ip_address + ':' + ip_port, 'xicidaili.com')
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_xici: ' + str(e))
 
     # ip181 第一页IP --> http://www.ip181.com/
     @staticmethod
@@ -144,7 +144,7 @@ class ProxySites:
             header['Host'] = 'www.ip181.com'
             async with aiohttp.ClientSession() as session:
                 async with session.get(url=url, headers=header) as response:
-                    r = await response.text(encoding='gb2312')
+                    r = await response.text()
 
             if r is not None and '' != r:
                 doc = PyQuery(r)
@@ -157,7 +157,7 @@ class ProxySites:
                         # 非异步，待解决
                         await VerifySave.verify_and_save(ip_address + ':' + ip_port, 'ip181.com')
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_ip181: ' + str(e))
 
     # 快代理 前5页免费IP --> http://www.kuaidaili.com/proxylist/
     @staticmethod
@@ -180,7 +180,7 @@ class ProxySites:
                         await VerifySave.verify_and_save(ip_address + ':' + ip_port, 'kuaidaili.com')
                     pass
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_kuaidaili: ' + str(e))
 
     # 66代理（API） --> http://m.66ip.cn/mo.php?tqsl=3000
     @staticmethod
@@ -199,7 +199,7 @@ class ProxySites:
                         # 非异步，待解决
                         await VerifySave.verify_and_save(each, 'm.66ip.cn')
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_66ip_api: ' + str(e))
 
     # 66代理 前5页免费IP --> http://www.66ip.cn/index.html
     @staticmethod
@@ -229,7 +229,7 @@ class ProxySites:
                                 # 非异步，待解决
                                 await VerifySave.verify_and_save(ip_address + ':' + ip_port, '66ip.cn')
         except Exception as e:
-            Util.log_error(e)
+            Util.log_error('proxy_site_66ip: ' + str(e))
 
 
 if __name__ == '__main__':
