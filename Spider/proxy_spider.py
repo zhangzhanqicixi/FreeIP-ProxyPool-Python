@@ -87,7 +87,6 @@ class SpiderProxy:
                 loop.run_until_complete(SpiderProxy.proxy_list())
             except Exception as e:
                 Util.log_error(e)
-                loop.close()
             finally:
                 if loop is not None:
                     loop.close()
