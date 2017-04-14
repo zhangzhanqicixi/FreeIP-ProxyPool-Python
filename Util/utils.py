@@ -7,6 +7,7 @@
 
 import time
 import logging
+from pytesseract import pytesseract
 
 # 创建一个logger
 logger = logging.getLogger('proxy_spider')
@@ -32,6 +33,15 @@ logger.addHandler(ch)
 class Util:
     def __init__(self):
         pass
+
+    # 基础ocr识别
+    @staticmethod
+    def image_to_str(image):
+        try:
+            return pytesseract.image_to_string(image)
+        except Exception as e:
+            Util.log_error(e)
+            return None
 
     # 获得当前系统时间
     @staticmethod
