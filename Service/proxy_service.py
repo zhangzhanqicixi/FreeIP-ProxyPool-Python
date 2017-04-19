@@ -4,14 +4,17 @@
 # @File    : proxy_service.py
 # @Software: PyCharm
 
-from DB.mysql import MySql
+from DB.mysqlDB import MySql
+import configparser
 
+cf = configparser.ConfigParser()
+cf.read('config.conf')
 DATABASE_NAME = 'httpbin'
-DB_ADDRESS = 'localhost'
-DB_USER = 'root'
-DB_PASS = 'root'
-DB_DATABASE = 'proxy_pool'
-DB_CHARSET = 'utf8'
+DB_ADDRESS = cf.get('db_mysql', 'db_host')
+DB_USER = cf.get('db_mysql', 'db_user')
+DB_PASS = cf.get('db_mysql', 'db_pass')
+DB_DATABASE = cf.get('db_mysql', 'db_database')
+DB_CHARSET = cf.get('db_mysql', 'db_charset')
 
 
 class Service:

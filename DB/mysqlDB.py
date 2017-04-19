@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2017/4/10 下午3:47
 # @Author  : ZHANGZHANQI
-# @File    : mysql.py
+# @File    : mysqlDB.py
 # @Software: PyCharm
 
 import pymysql.cursors

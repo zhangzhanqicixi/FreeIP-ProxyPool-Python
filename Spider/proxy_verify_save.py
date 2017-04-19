@@ -10,7 +10,7 @@ import sys
 sys.path.append('..')
 from Verify.proxy_verify import VerifyProxy
 from Util.utils import Util
-from DB.mysql import MySql
+from DB.mysqlDB import MySql
 
 HEADERS = {'Connection': 'keep-alive',
            'Cache-Control': 'max-age=0',

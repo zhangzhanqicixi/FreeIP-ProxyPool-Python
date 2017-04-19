@@ -7,18 +7,23 @@
 import sys
 import threading
 import time
+import configparser
 
 sys.path.append('..')
 
 from Util.utils import Util
-from DB.mysql import MySql
+from DB.mysqlDB import MySql
 from Verify.proxy_verify import VerifyProxy
 
-DB_ADDRESS = 'localhost'
-DB_USER = 'root'
-DB_PASS = 'root'
-DB_DATABASE = 'proxy_pool'
-DB_CHARSET = 'utf8'
+cf = configparser.ConfigParser()
+cf.read('config.conf')
+
+DB_ADDRESS = cf.get('db_mysql', 'db_host')
+DB_USER = cf.get('db_mysql', 'db_user')
+DB_PASS = cf.get('db_mysql', 'db_pass')
+DB_DATABASE = cf.get('db_mysql', 'db_database')
+DB_CHARSET = cf.get('db_mysql', 'db_charset')
+thread_count = cf.get('process_threads', 'threads')
 threadLock = threading.Lock()
 threads = []
 
@@ -84,7 +89,7 @@ class Process(threading.Thread):
 
 
 def run():
-    for i in range(3):
+    for i in range(int(thread_count)):
         thread = Process()
         thread.start()
         threads.append(thread)
@@ -94,7 +99,7 @@ def run():
 
 
 if __name__ == '__main__':
-    for i in range(3):
+    for i in range(int(thread_count)):
         thread = Process()
         thread.start()
         threads.append(thread)

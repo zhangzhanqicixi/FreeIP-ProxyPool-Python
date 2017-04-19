@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2017/4/7 下午5:33
 # @Author  : ZHANGZHANQI
-# @File    : mongo.py
+# @File    : mongoDB.py
 # @Software: PyCharm
 
 import pymongo

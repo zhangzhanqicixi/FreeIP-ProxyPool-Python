@@ -9,6 +9,7 @@ import asyncio
 import re
 import sys
 import requests
+import configparser
 from pyquery import PyQuery
 from PIL import Image
 from io import BytesIO
@@ -26,11 +27,14 @@ HEADERS = {'Connection': 'keep-alive',
            'Accept-Encoding': 'gzip, deflate, sdch',
            'Accept-Language': 'zh-CN,zh;q=0.8',
            }
-DB_ADDRESS = 'localhost'
-DB_USER = 'root'
-DB_PASS = 'root'
-DB_DATABASE = 'proxy_pool'
-DB_CHARSET = 'utf8'
+cf = configparser.ConfigParser()
+cf.read('config.conf')
+
+DB_ADDRESS = cf.get('db_mysql', 'db_host')
+DB_USER = cf.get('db_mysql', 'db_user')
+DB_PASS = cf.get('db_mysql', 'db_pass')
+DB_DATABASE = cf.get('db_mysql', 'db_database')
+DB_CHARSET = cf.get('db_mysql', 'db_charset')
 
 
 class ProxySites:
