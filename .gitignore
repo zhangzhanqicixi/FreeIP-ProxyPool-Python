@@ -3,6 +3,7 @@
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
+__pycache__
 __pycache__/
 *.py[cod]
 *$py.class
@@ -98,3 +99,8 @@ ENV/
 .ropeproject
 
 # End of https://www.gitignore.io/api/python
+.DS_Store
+.idea/
+Test/
+static/
+templates/
