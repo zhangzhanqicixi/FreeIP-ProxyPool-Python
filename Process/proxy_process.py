@@ -33,10 +33,12 @@ class Process(threading.Thread):
         try:
             fetchall = MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).query(sql)
             if fetchall is None:
-                sql = 'SELECT * FROM httpbin WHERE anonymity=2 AND alive=1 ORDER BY update_time'
+                # 如果查出来没有数据，则优先重复验证最新验证的IP（保证IP高度可用）
+                sql = 'SELECT * FROM httpbin WHERE anonymity=2 AND alive=1 ORDER BY update_time DESC'
                 fetchall = MySql(DB_ADDRESS, DB_USER, DB_PASS, DB_DATABASE, DB_CHARSET).query(sql)
             if fetchall is None:
-                time.sleep(10)
+                # 休息5秒后退出
+                time.sleep(5)
                 return
             for each in fetchall:
                 each_id = each[0]
@@ -82,9 +84,12 @@ class Process(threading.Thread):
             if self.getName() == 'Thread-1':
                 # 线程1 验证前20个IP已验证时间较长的IP
                 sql = 'SELECT * FROM httpbin ORDER BY update_time LIMIT 20'
-            else:
+            elif self.getName() == 'Thread-2':
                 # 线程2 验证所有未验证的IP
                 sql = 'SELECT * FROM httpbin WHERE update_time IS NULL'
+            else:
+                # 线程N(N>2) 验证高匿且可用的最新的IP
+                sql = 'SELECT * FROM httpbin WHERE anonymity=2 AND alive=1 ORDER BY update_time DESC'
             self.checking(sql)
 
 

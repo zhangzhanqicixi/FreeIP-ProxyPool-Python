@@ -41,7 +41,7 @@ class ProxySites:
     def __init__(self):
         pass
 
-    # mimvp -->  http://proxy.mimvp.com/free.php
+    # mimvp --> http://proxy.mimvp.com/free.php
     @staticmethod
     async def proxy_site_mimvp():
         # 国内普通、高匿，国外普通、高匿
@@ -177,7 +177,7 @@ class ProxySites:
 
                 if r is not None and '' != r:
                     doc = PyQuery(r)
-                    for each in doc('#index_free_list > table > tbody')('tr').items():
+                    for each in doc('#freelist > table > tbody')('tr').items():
                         ip_address = each('td[data-title=IP]').eq(0).text()
                         ip_port = each('td[data-title=PORT]').eq(0).text()
                         # 非异步，待解决
@@ -191,8 +191,10 @@ class ProxySites:
     async def proxy_site_66ip_api():
         try:
             url = 'http://m.66ip.cn/mo.php?tqsl=3000'
+            header = HEADERS
+            header['Host'] = 'm.66ip.cn'
             async with aiohttp.ClientSession() as session:
-                async with session.get(url=url, headers=HEADERS) as response:
+                async with session.get(url=url, headers=header) as response:
                     r = await response.text()
 
             if r is not None and '' != r:
@@ -237,6 +239,8 @@ class ProxySites:
 
 
 if __name__ == '__main__':
+    # ProxySites.proxy_site_goubanjia()
+
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(ProxySites.proxy_site_goubanjia())
+    loop.run_until_complete(ProxySites.proxy_site_66ip())
     loop.close()
